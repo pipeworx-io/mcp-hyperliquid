@@ -1,6 +1,6 @@
 {
   "name": "@pipeworx/mcp-hyperliquid",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Hyperliquid MCP — read-only market data from Hyperliquid's public info API.",
   "type": "module",
   "main": "src/index.ts",
@@ -26,7 +26,7 @@
     "@cloudflare/workers-types": "^4.20260405.1"
   },
   "pipeworx": {
-    "sourceHash": "v1-081aad9d9bbf8dd414d22d89ea7d724565dabb8eea5621e7f4ed6aa09089b6e0",
-    "sourceCommit": "e24dc8ff6a0110675ba7e3fddac406cd755bed9b"
+    "sourceHash": "v1-c433bbf3b86ce9ac8832381aa865c092c73d51dfb4124609de07a2215944523c",
+    "sourceCommit": "24e32b525f9c0b2fd7d94b519b08abb108cc11cd"
   }
 }

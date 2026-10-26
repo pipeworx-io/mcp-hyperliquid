@@ -1,12 +1,13 @@
 # @pipeworx/hyperliquid
 
-Read-only market data for Hyperliquid, the largest onchain perpetuals exchange
-(it also runs a spot market) — mid prices, order books, candles, funding
-rates/history and live open interest — proxied live, per request, from
-Hyperliquid's own public info API. No wallet, no signing, no trading: the
-exchange/signed-order endpoints are out of scope on purpose.
+Read-only data for Hyperliquid, the largest onchain perpetuals exchange (it
+also runs a spot market) — mid prices, order books, candles, funding
+rates/history, live open interest, and the public account state of any wallet
+address (perp margin and positions, spot balances, account value history) —
+proxied live, per request, from Hyperliquid's own public info API. No key, no
+signing, no trading: the signed exchange endpoints are out of scope on purpose.
 
-Part of [Pipeworx](https://pipeworx.io) — an MCP gateway connecting AI agents to 1688+ live data sources. This is an independent, unofficial integration — not affiliated with, endorsed by, or published by the upstream provider.
+Part of [Pipeworx](https://pipeworx.io) — an MCP gateway connecting AI agents to 1881+ live data sources. This is an independent, unofficial integration — not affiliated with, endorsed by, or published by the upstream provider.
 
 ## Tools
 
@@ -25,6 +26,25 @@ Part of [Pipeworx](https://pipeworx.io) — an MCP gateway connecting AI agents 
   — OHLCV candles for any window Hyperliquid retains.
 - `hyperliquid_funding_history(coin, lookback_hours?, start_time?, end_time?)`
   — the realized funding-rate series (Hyperliquid pays funding hourly).
+
+- `hyperliquid_account_state(address)` — one wallet's perp account: account
+  value, notional, margin used, withdrawable, and every open position (signed
+  size, entry, PnL, leverage, liquidation price, cumulative funding).
+- `hyperliquid_spot_balances(address, limit?)` — one wallet's spot tokens:
+  total, on hold in orders, available, and cost-basis notional.
+- `hyperliquid_account_history(address, period?, scope?)` — account value and
+  PnL over a day/week/month/all time, with start/end values and volume first.
+
+Account tools read a public ledger: addresses are pseudonymous on-chain
+identifiers, Hyperliquid serves their state to anyone without credentials, and
+nothing here maps an address to a person. An unknown address returns an explicit
+"no activity" answer, not a bare zero.
+
+`hyperliquid_account_state` answers two different questions with two flags, so a
+caller never has to infer one from the other: `account_has_balance` (the perp
+account value is non-zero, idle dust included) and
+`account_has_open_perp_positions` (a position is open, or notional or margin
+used is non-zero). A dust-funded address with nothing open is `true` / `false`.
 
 ## Auth
 
@@ -116,7 +136,7 @@ directly, instead of just this one's:
 }
 ```
 
-Both URLs reach the same gateway and the same 1688+ data sources. The
+Both URLs reach the same gateway and the same 1881+ data sources. The
 only difference is which pack's tools are listed **directly**; `ask_pipeworx`
 reaches all of them from either one.
 
