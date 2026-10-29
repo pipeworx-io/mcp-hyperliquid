@@ -1,12 +1,20 @@
 {
   "name": "@pipeworx/mcp-hyperliquid",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Hyperliquid MCP — read-only market data from Hyperliquid's public info API.",
   "type": "module",
-  "main": "src/index.ts",
-  "types": "src/index.ts",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./tools.json": "./tools.json",
+    "./package.json": "./package.json"
+  },
   "bin": {
     "mcp-hyperliquid": "bin/cli.js"
+  },
+  "files": ["bin/", "lib/", "tools.json", "server.json"],
+  "engines": {
+    "node": ">=18"
   },
   "keywords": ["mcp", "mcp-server", "model-context-protocol", "pipeworx", "hyperliquid"],
   "license": "MIT",
@@ -14,19 +22,12 @@
     "type": "git",
     "url": "git+https://github.com/pipeworx-io/mcp-hyperliquid.git"
   },
-  "scripts": {
-    "typecheck": "tsc --noEmit"
-  },
-  "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.30.0",
-    "tsx": "^4.19.0"
-  },
-  "devDependencies": {
-    "typescript": "^5.9.3",
-    "@cloudflare/workers-types": "^4.20260405.1"
-  },
+  "mcpName": "io.github.pipeworx-io/hyperliquid",
   "pipeworx": {
-    "sourceHash": "v1-c433bbf3b86ce9ac8832381aa865c092c73d51dfb4124609de07a2215944523c",
-    "sourceCommit": "24e32b525f9c0b2fd7d94b519b08abb108cc11cd"
+    "mode": "gateway",
+    "slug": "hyperliquid",
+    "gatewaySlug": "hyperliquid",
+    "sourceHash": "v1-54251b6b2e946cdfa39262df8dde53139c1067f9ac9fe9e11cdb183a5cf7c49e",
+    "sourceCommit": "4844029e402d6bd2fe735add8abf6d46735f8ed5"
   }
 }
