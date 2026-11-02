@@ -1,6 +1,6 @@
 {
   "name": "@pipeworx/mcp-hyperliquid",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Hyperliquid MCP — read-only market data from Hyperliquid's public info API.",
   "type": "module",
   "main": "lib/index.js",
@@ -27,7 +27,7 @@
     "mode": "gateway",
     "slug": "hyperliquid",
     "gatewaySlug": "hyperliquid",
-    "sourceHash": "v1-54251b6b2e946cdfa39262df8dde53139c1067f9ac9fe9e11cdb183a5cf7c49e",
-    "sourceCommit": "4844029e402d6bd2fe735add8abf6d46735f8ed5"
+    "sourceHash": "v1-bdb574d599e5ee9d4cefa4675d283c3b265e292d160d0e7e72325fdc1ddaad03",
+    "sourceCommit": "0ca9712c0ac03bb0121cc7e81b202d0c45ac02ca"
   }
 }
